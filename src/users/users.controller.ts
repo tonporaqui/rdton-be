@@ -11,16 +11,22 @@ import { UsersService } from './users.service'
 import { CreateUserDto, UpdateUserDto } from './dto/create-user.dto'
 import { User, UserStatus } from './interfaces/user.interface'
 import { v4 } from 'uuid'
+import {
+	ApiBearerAuth,
+	ApiOperation,
+	ApiResponse,
+	ApiTags,
+} from '@nestjs/swagger'
 
+@ApiBearerAuth()
+@ApiTags('users')
 @Controller('users')
 export class UsersController {
 	constructor(private userServices: UsersService) {}
-	@Get()
-	prueba() {
-		return 'hola'
-	}
 
 	@Post()
+	@ApiOperation({ summary: 'Create User' })
+	@ApiResponse({ status: 403, description: 'Forbidden.' })
 	async createUser(@Body() createUserDto: CreateUserDto) {
 		createUserDto.id = v4()
 		createUserDto.date_create = new Date().toISOString()
@@ -30,11 +36,21 @@ export class UsersController {
 	}
 
 	@Get()
+	@ApiResponse({
+		status: 200,
+		description: 'Return all User',
+		type: Array,
+	})
 	async getAll(): Promise<User[]> {
 		return this.userServices.getAllUsers()
 	}
 
 	@Get(':id')
+	@ApiResponse({
+		status: 200,
+		description: 'Return User found',
+		type: Array,
+	})
 	async getUserID(@Param('id') id: string) {
 		return this.userServices.getUserById(id)
 	}
