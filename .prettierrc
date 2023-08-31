@@ -2,8 +2,24 @@
   "prettier/prettier": [
     "error",
     {
+      "arrowParens": "avoid",
+      "bracketSameLine": true,
+      "bracketSpacing": true,
+      "semi": false,
       "singleQuote": true,
-      "parser": "flow"
+      "jsxSingleQuote": true,
+      "quoteProps": "as-needed",
+      "trailingComma": "es5",
+      "singleAttributePerLine": true,
+      "htmlWhitespaceSensitivity": "css",
+      "vueIndentScriptAndStyle": false,
+      "proseWrap": "preserve",
+      "insertPragma": false,
+      "printWidth": 80,
+      "requirePragma": false,
+      "tabWidth": 2,
+      "useTabs": true,
+      "embeddedLanguageFormatting": "auto"
     }
   ]
 }

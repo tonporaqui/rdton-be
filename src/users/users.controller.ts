@@ -1,6 +1,14 @@
-import { Body, Controller, Get, Post } from "@nestjs/common";
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
+} from "@nestjs/common";
 import { UsersService } from "./users.service";
-import { CreateUserDto } from "./dto/create-user.dto";
+import { CreateUserDto, UpdateUserDto } from "./dto/create-user.dto";
 import { User, UserStatus } from "./interfaces/user.interface";
 import { v4 } from "uuid";
 
@@ -20,5 +28,23 @@ export class UsersController {
   @Get()
   async getAll(): Promise<User[]> {
     return this.userServices.getAllUsers();
+  }
+
+  @Get(":id")
+  async getUserID(@Param("id") id: string) {
+    return this.userServices.getUserById(id);
+  }
+
+  @Delete(":id")
+  async removeUser(@Param("id") id: string) {
+    this.userServices.deleteUser(id);
+  }
+
+  @Patch(":id")
+  async updateUsers(
+    @Param(":id") id: string,
+    @Body() updatedFileds: UpdateUserDto,
+  ) {
+    return this.userServices.updatedUsers(id, updatedFileds);
   }
 }
