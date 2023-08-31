@@ -15,6 +15,10 @@ import { v4 } from 'uuid'
 @Controller('users')
 export class UsersController {
 	constructor(private userServices: UsersService) {}
+	@Get()
+	prueba() {
+		return 'hola'
+	}
 
 	@Post()
 	async createUser(@Body() createUserDto: CreateUserDto) {
