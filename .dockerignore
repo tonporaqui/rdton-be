@@ -1,0 +1,15 @@
+node_modules
+.git
+.output
+target
+.eslintignore
+.eslintrc.js
+.gitattributes
+.gitignore
+.npmrc
+.prettierrc
+README.md
+.vscode
+.dockerignore
+Dockerfile.dev
+dist

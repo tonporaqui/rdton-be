@@ -1,0 +1,21 @@
+FROM node:18
+
+WORKDIR /user/src/app
+
+# Instala pnpm globalmente en el contenedor
+RUN npm install -g pnpm
+
+# Copia el archivo package.json y pnpm-lock.yaml
+COPY package*.json pnpm-lock.yaml ./
+
+# Copia el archivo package.json y pnpm-lock.yaml
+RUN pnpm install
+
+# Copia el resto de los archivos del proyecto
+COPY . .
+
+# Expone el puerto 3001
+EXPOSE 3001
+
+# Comando para iniciar la aplicación
+CMD [ "pnpm", "run", "start:dev" ]
