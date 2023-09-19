@@ -7,16 +7,16 @@ import {
 	Patch,
 	Post,
 } from '@nestjs/common'
-import { UsersService } from './users.service'
-import { CreateUserDto, UpdateUserDto } from './dto/create-user.dto'
-import { User, UserStatus } from './interfaces/user.interface'
-import { v4 } from 'uuid'
 import {
 	ApiBearerAuth,
 	ApiOperation,
 	ApiResponse,
 	ApiTags,
 } from '@nestjs/swagger'
+import { v4 } from 'uuid'
+import { CreateUserDto, UpdateUserDto } from './dto/create-user.dto'
+import { User, UserStatus } from './interfaces/user.interface'
+import { UsersService } from './users.service'
 
 @ApiBearerAuth()
 @ApiTags('users')
@@ -66,5 +66,15 @@ export class UsersController {
 		@Body() updatedFileds: UpdateUserDto,
 	) {
 		return this.userServices.updatedUsers(id, updatedFileds)
+	}
+
+	@Delete()
+	@ApiResponse({
+		status: 200,
+		description: 'Delete all User',
+		type: Array,
+	})
+	async deleteAll() {
+		return this.userServices.deleteAllUsers()
 	}
 }

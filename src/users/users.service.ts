@@ -31,4 +31,8 @@ export class UsersService {
 		this.users.map(user => (user.id === id ? newUser : user))
 		return newUser
 	}
+
+	deleteAllUsers() {
+		return (this.users = [])
+	}
 }
