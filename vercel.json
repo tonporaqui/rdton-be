@@ -1,6 +1,6 @@
 {
-    "buildCommand": "next build",
-    "framework": "nextjs",
+    "buildCommand": "nest build",
+    "framework": "nestjs",
     "routes": [
         {
             "dest": "src/main.ts",
