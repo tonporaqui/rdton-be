@@ -6,10 +6,10 @@ export enum UserStatus {
 
 export interface User {
 	id?: string
-	name: string
+	name?: string
 	first_name?: string
 	last_name?: string
-	status: UserStatus
+	status?: UserStatus
 	date_create?: string
 	password: string
 }

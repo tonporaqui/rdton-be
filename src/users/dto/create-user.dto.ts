@@ -1,5 +1,4 @@
 import { ApiProperty } from '@nestjs/swagger'
-import { UserStatus } from '../interfaces/user.interface'
 import {
 	IsDateString,
 	IsIn,
@@ -8,6 +7,7 @@ import {
 	IsString,
 	MinLength,
 } from 'class-validator'
+import { UserStatus } from '../interfaces/user.interface'
 
 export class CreateUserDto {
 	@ApiProperty({
@@ -81,8 +81,6 @@ export class UpdateUserDto {
 		description: 'identificador de usuario',
 		type: 'uuid v4',
 	})
-	@IsString()
-	@IsNotEmpty()
 	id?: string
 
 	@ApiProperty({
