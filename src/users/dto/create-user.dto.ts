@@ -96,6 +96,7 @@ export class UpdateUserDto {
 	@IsString()
 	@IsNotEmpty()
 	@MinLength(4)
+	@IsOptional()
 	name?: string
 
 	@ApiProperty({
@@ -106,6 +107,7 @@ export class UpdateUserDto {
 	@IsString()
 	@IsNotEmpty()
 	@MinLength(4)
+	@IsOptional()
 	first_name?: string
 
 	@ApiProperty({
@@ -116,11 +118,13 @@ export class UpdateUserDto {
 	@IsString()
 	@IsNotEmpty()
 	@MinLength(4)
+	@IsOptional()
 	last_name?: string
 
 	@ApiProperty()
 	@IsString()
 	@IsNotEmpty()
+	@IsOptional()
 	@IsIn([UserStatus.CREATE, UserStatus.UPDATE, UserStatus.DISABLE])
 	status?: UserStatus
 
@@ -130,6 +134,7 @@ export class UpdateUserDto {
 	})
 	@IsDateString()
 	@IsNotEmpty()
+	@IsOptional()
 	date_create?: string
 
 	@ApiProperty({

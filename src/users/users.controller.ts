@@ -61,8 +61,13 @@ export class UsersController {
 	}
 
 	@Patch(':id')
+	@ApiResponse({
+		status: 200,
+		description: 'Update User Attribute',
+		type: Array,
+	})
 	async updateUsers(
-		@Param(':id') id: string,
+		@Param('id') id: string,
 		@Body() updatedFileds: UpdateUserDto,
 	) {
 		return this.userServices.updatedUsers(id, updatedFileds)
