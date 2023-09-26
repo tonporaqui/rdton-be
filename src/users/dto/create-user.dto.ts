@@ -16,6 +16,7 @@ export class CreateUserDto {
 	})
 	@IsString()
 	@IsNotEmpty()
+	@IsOptional()
 	id: string
 
 	@ApiProperty({
@@ -73,6 +74,7 @@ export class CreateUserDto {
 	@IsString()
 	@IsNotEmpty()
 	@MinLength(9)
+	@IsOptional()
 	password: string
 }
 
