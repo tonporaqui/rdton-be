@@ -17,11 +17,11 @@ async function bootstrap() {
 	app.enableCors({
 		origin: [
 			'http://localhost:3000',
-			'http://localhost:3000/users',
+			'http://localhost:3000/client-api',
 			'https://rdton-fe.vercel.app/client-api',
 			'https://rdton-fe.vercel.app/',
 		],
-		methods: ['GET', 'POST', 'PATCH', 'DELETE'],
+		methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
 	})
 
 	await app.listen(3001)
