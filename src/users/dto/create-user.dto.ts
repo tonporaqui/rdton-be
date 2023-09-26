@@ -81,6 +81,8 @@ export class UpdateUserDto {
 		description: 'identificador de usuario',
 		type: 'uuid v4',
 	})
+	// @IsString()
+	// @IsNotEmpty()
 	id?: string
 
 	@ApiProperty({
@@ -135,8 +137,8 @@ export class UpdateUserDto {
 		minimum: 9,
 	})
 	@ApiProperty()
-	@IsString()
-	@IsNotEmpty()
-	@MinLength(9)
+	// @IsString()
+	// @IsNotEmpty()
+	// @MinLength(9)
 	password?: string
 }
