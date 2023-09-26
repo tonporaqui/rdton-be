@@ -14,7 +14,16 @@ async function bootstrap() {
 	const document = SwaggerModule.createDocument(app, config)
 	SwaggerModule.setup('docs', app, document)
 	app.useGlobalPipes(new ValidationPipe())
-	app.enableCors()
+	app.enableCors({
+		origin: [
+			'http://localhost:3000',
+			'http://localhost:3000/users',
+			'https://rdton-fe.vercel.app/client-api',
+			'https://rdton-fe.vercel.app/',
+		],
+		methods: ['GET', 'POST', 'PATCH', 'DELETE'],
+	})
+
 	await app.listen(3001)
 }
 bootstrap()
