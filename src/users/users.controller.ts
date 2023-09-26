@@ -57,7 +57,24 @@ export class UsersController {
 
 	@Delete(':id')
 	async removeUser(@Param('id') id: string) {
-		this.userServices.deleteUser(id)
+		// Check if user exists
+		const user = await this.userServices.getUserById(id)
+		if (!user) {
+			// Return error if user does not exist
+			return {
+				status: 404,
+				message: 'User does not exist',
+			}
+		}
+
+		// Delete user from database
+		await this.userServices.deleteUser(id)
+
+		// Return success response
+		return {
+			status: 200,
+			message: 'User deleted successfully',
+		}
 	}
 
 	@Patch(':id')
